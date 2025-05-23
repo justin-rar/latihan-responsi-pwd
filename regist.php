@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $result = mysqli_fetch_assoc($hasilusn);
 
     if ($password !== $confirm_password) {
-        $_SESSION['log'] = "Password dan konfirmasi password tidak cocok!";
+        $_SESSION['log_notmatch'] = "Password dan konfirmasi password tidak cocok!";
         header('Location: register.php');
         exit;
     }

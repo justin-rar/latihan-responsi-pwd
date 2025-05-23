@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION["username"])) { 
-    header("Location: dashboard.php"); 
+    header("Location: login.php"); 
     exit(); 
 }
 ?>
@@ -14,5 +14,8 @@ if (!isset($_SESSION["username"])) {
 </head>
 <body>
     <h1>HALO</h1>
+    <form action="logout.php" method="post">
+        <button>logout</button>
+    </form>
 </body>
 </html>

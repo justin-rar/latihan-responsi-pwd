@@ -33,6 +33,17 @@ if (isset($_SESSION["username"])) {
                 session_unset();
                 }
             ?>
+            <?php 
+                if(isset($_SESSION['log_notmatch'])){
+            ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Register gagal!</strong> password tidak sama dengan konfirmasi password.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <?php
+                session_unset();
+                }
+            ?>
             <div class="form-floating mb-2">
                 <input type="text" class="form-control" placeholder="Username" name="username" required>
                 <label>Username</label>
