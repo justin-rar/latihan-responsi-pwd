@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $nim = $_POST['nim'];
     $nama = $_POST['nama'];
     $angkatan = $_POST['angkatan'];
-    $id_prod= $_POST['id_prod'];
+    $id_prod= $_POST['prodi'];
 
     $sqlnim = "SELECT * FROM tb_mhs WHERE nim = '$nim'";
     $querynim = mysqli_query($conn, $sqlnim);
@@ -24,11 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 </script>";
     }
 
-    $sql_prodi = "SELECT nama FROM tb_prodi WHERE id_prod= '$id_prod'";
-    $result_prodi = mysqli_query($conn, $sql_prodi);
-
     $query = "INSERT INTO tb_mhs(nim, nama, angkatan, id_prod) 
-            VALUES ('$nim', '$nama', '$angkatan', '$nama_prodi')";
+            VALUES ('$nim', '$nama', '$angkatan', '$id_prod')";
 
     if (mysqli_query($conn, $query)) {
         $_SESSION['log_tambah'] = "Data berhasil ditambahkan!";

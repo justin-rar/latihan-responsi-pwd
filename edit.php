@@ -86,7 +86,7 @@ if (!$row) {
                             $selected = ($rowprod['id_prod'] == $row['id_prod']) ? 'selected' : '';
                     ?>
                             <option value="<?= htmlspecialchars($rowprod['id_prod']) ?>" <?= $selected ?>>
-                                <?= htmlspecialchars($rowprod['nama']) ?>
+                                <?= htmlspecialchars($rowprod['nama_prodi']) ?>
                             </option>
                     <?php
                         }

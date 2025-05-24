@@ -14,7 +14,6 @@ if (!isset($_GET['nim'])) {
 
 $nim = mysqli_real_escape_string($conn, $_GET['nim']);
 
-// Check if record exists
 $check = "SELECT * FROM tb_mhs WHERE nim = '$nim'";
 $result = mysqli_query($conn, $check);
 

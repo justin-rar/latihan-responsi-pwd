@@ -86,12 +86,11 @@ if (!isset($_SESSION["username"])) {
                 if (mysqli_num_rows($hasil) > 0) {
                     while ($row = mysqli_fetch_assoc($hasil)) {
                 ?>
-
                         <tr>
                             <td><?= htmlspecialchars($row['nama_prodi']) ?></td>
                             <td>
-                                <a href='editprodi.php?id=<?= $row['id_prod'] ?>' class='btn btn-warning btn-sm'>Edit</a>
-                                <a href='deleteprodi.php?id=<?= $row['id_prod'] ?>' class='btn btn-danger btn-sm' onclick='return confirm("Yakin ingin menghapus?")'>Hapus</a>
+                                <a href='editprodi.php?id_prod=<?= $row['id_prod'] ?>' class='btn btn-warning btn-sm'>Edit</a>
+                                <a href='deleteprodi.php?id_prod=<?= $row['id_prod'] ?>' class='btn btn-danger btn-sm' onclick='return confirm("Yakin ingin menghapus?")'>Hapus</a>
                             </td>
                         </tr>
                     <?php

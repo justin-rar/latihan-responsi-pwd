@@ -7,21 +7,20 @@ if (!isset($_SESSION["username"])) {
 
 require("connect.php");
 
-$sql = "SELECT * FROM tb_mhs";
-$result = mysqli_query($conn, $sql);
-
-$sqlprd = "SELECT m.nim, m.nama, m.angkatan, p.nama_prodi 
+$sql = "SELECT m.nim, m.nama, m.angkatan, p.nama_prodi, p.id_prod 
         FROM tb_mhs m
-        JOIN tb_prodi p ON m.id_prod = p.id_prod";
-$hasilprd = mysqli_query($conn, $sqlprd);
+        LEFT JOIN tb_prodi p ON m.id_prod = p.id_prod";
+
+$sqlprod = "SELECT * FROM tb_prodi";
+$hasilprod = mysqli_query($conn, $sqlprod);
 
 if (isset($_GET['search']) && !empty($_GET['search'])) {
     $search = mysqli_real_escape_string($conn, $_GET['search']);
     $sql .= " WHERE m.nama LIKE '%$search%'";
-
-    $sqlprod = "SELECT * FROM tb_prodi";
-    $hasilprod = mysqli_query($conn, $sqlprod);
 }
+
+// Eksekusi query utama
+$result = mysqli_query($conn, $sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -183,8 +182,8 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
             </thead>
             <tbody>
                 <?php
-                if (mysqli_num_rows($hasilprd) > 0) {
-                    while ($row = mysqli_fetch_assoc($hasilprd)) {
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
                 ?>
                         <tr>
                             <td><?= htmlspecialchars($row['nim']) ?></td>
